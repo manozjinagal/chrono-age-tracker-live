@@ -11,78 +11,56 @@ const AgeDisplay = ({ birthDate }: AgeDisplayProps) => {
   const [animateSeconds, setAnimateSeconds] = useState(false);
   
   useEffect(() => {
-    // Update age every second
     const timer = setInterval(() => {
       setAge(calculateAge(birthDate));
       setAnimateSeconds(true);
       setTimeout(() => setAnimateSeconds(false), 300);
     }, 1000);
     
-    // Clean up on unmount
     return () => clearInterval(timer);
   }, [birthDate]);
   
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <h2 className="text-xl md:text-2xl text-center font-medium mb-6 text-purple-dark">
+      <h2 className="text-xl md:text-2xl text-center font-medium mb-6 text-gray-800">
         You have lived for exactly:
       </h2>
       
-      <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-        <div className="text-center">
-          <div className="digit-card bg-gradient-to-b from-white to-soft-purple">
-            <span className="digit">{age.years}</span>
-          </div>
-          <p className="digit-label">Years</p>
+      <div className="flex justify-center items-center space-x-2 bg-gray-100 rounded-lg p-4 shadow-sm">
+        <div className="flex items-center space-x-1">
+          <span className="text-xl md:text-2xl font-bold text-gray-900">{age.years}</span>
+          <span className="text-sm text-gray-600">Y</span>
         </div>
-        
-        <div className="separator">:</div>
-        
-        <div className="text-center">
-          <div className="digit-card bg-gradient-to-b from-white to-soft-purple">
-            <span className="digit">{formatTwoDigits(age.months)}</span>
-          </div>
-          <p className="digit-label">Months</p>
+        <span className="text-gray-500">:</span>
+        <div className="flex items-center space-x-1">
+          <span className="text-xl md:text-2xl font-bold text-gray-900">{formatTwoDigits(age.months)}</span>
+          <span className="text-sm text-gray-600">M</span>
         </div>
-        
-        <div className="separator">:</div>
-        
-        <div className="text-center">
-          <div className="digit-card bg-gradient-to-b from-white to-soft-purple">
-            <span className="digit">{formatTwoDigits(age.days)}</span>
-          </div>
-          <p className="digit-label">Days</p>
+        <span className="text-gray-500">:</span>
+        <div className="flex items-center space-x-1">
+          <span className="text-xl md:text-2xl font-bold text-gray-900">{formatTwoDigits(age.days)}</span>
+          <span className="text-sm text-gray-600">D</span>
         </div>
-        
-        <div className="separator">:</div>
-        
-        <div className="text-center">
-          <div className="digit-card bg-gradient-to-b from-white to-soft-purple">
-            <span className="digit">{formatTwoDigits(age.hours)}</span>
-          </div>
-          <p className="digit-label">Hours</p>
+        <span className="text-gray-500">:</span>
+        <div className="flex items-center space-x-1">
+          <span className="text-xl md:text-2xl font-bold text-gray-900">{formatTwoDigits(age.hours)}</span>
+          <span className="text-sm text-gray-600">H</span>
         </div>
-        
-        <div className="separator">:</div>
-        
-        <div className="text-center">
-          <div className="digit-card bg-gradient-to-b from-white to-soft-purple">
-            <span className="digit">{formatTwoDigits(age.minutes)}</span>
-          </div>
-          <p className="digit-label">Minutes</p>
+        <span className="text-gray-500">:</span>
+        <div className="flex items-center space-x-1">
+          <span className="text-xl md:text-2xl font-bold text-gray-900">{formatTwoDigits(age.minutes)}</span>
+          <span className="text-sm text-gray-600">M</span>
         </div>
-        
-        <div className="separator">:</div>
-        
-        <div className="text-center">
-          <div className={`digit-card bg-gradient-to-b from-white to-soft-purple ${animateSeconds ? 'animate-number-change' : ''}`}>
-            <span className="digit">{formatTwoDigits(age.seconds)}</span>
-          </div>
-          <p className="digit-label">Seconds</p>
+        <span className="text-gray-500">:</span>
+        <div className="flex items-center space-x-1">
+          <span className={`text-xl md:text-2xl font-bold text-gray-900 ${animateSeconds ? 'animate-pulse' : ''}`}>
+            {formatTwoDigits(age.seconds)}
+          </span>
+          <span className="text-sm text-gray-600">S</span>
         </div>
       </div>
       
-      <div className="mt-8 text-center text-purple-dark/70 text-sm md:text-base">
+      <div className="mt-8 text-center text-gray-700 text-sm md:text-base">
         <p>Born on: {birthDate.toLocaleDateString('en-US', {
           weekday: 'long',
           year: 'numeric',
