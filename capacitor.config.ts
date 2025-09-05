@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'app.lovable.3208cf9a37ed47dfb90779a48a924ddb',
+  appId: 'app.lovable.a3208cf9a37ed47dfb90779a48a924ddb',
   appName: 'chrono-age-tracker-live',
   webDir: 'dist',
   server: {
